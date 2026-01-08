@@ -1,10 +1,12 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Camera, Upload, Wand2, History, X, Download, RefreshCcw, LayoutPanelLeft, Aperture, FlipHorizontal, Smartphone } from 'lucide-react';
+import { Camera, Upload, Wand2, History, X, Download, RefreshCcw, LayoutPanelLeft, Aperture, FlipHorizontal, Smartphone, ExternalLink } from 'lucide-react';
 import { Button } from './components/Button';
 import { geminiService } from './services/geminiService';
 import { AppStatus, GenerationRecord } from './types';
 import { DEFAULT_PROMPT, LOADING_MESSAGES } from './constants';
+
+const WORKSPACE_URL = "https://ai.studio/apps/drive/1ipu6TQE0zX4D1lL794m6eD8ndZYyP2N7";
 
 const App: React.FC = () => {
   const [status, setStatus] = useState<AppStatus>(AppStatus.IDLE);
@@ -192,6 +194,12 @@ const App: React.FC = () => {
             <h1 className="text-xl font-bold tracking-tight">NOIR <span className="text-neutral-500 font-light hidden sm:inline">STUDIO</span></h1>
           </div>
           <div className="flex items-center gap-2">
+            <a href={WORKSPACE_URL} target="_blank" rel="noopener noreferrer" className="hidden md:inline-flex">
+              <Button variant="outline" size="sm" className="border-white/10 hover:border-white/30">
+                <ExternalLink className="w-4 h-4 mr-2" />
+                Workspace
+              </Button>
+            </a>
             {deferredPrompt && (
               <Button variant="outline" size="sm" onClick={handleInstallClick} className="hidden sm:inline-flex border-white/20">
                 <Smartphone className="w-4 h-4 mr-2" />
@@ -361,12 +369,18 @@ const App: React.FC = () => {
         </div>
       )}
 
-      <footer className="py-12 lg:py-20 border-t border-neutral-900 text-center opacity-60">
+      <footer className="py-12 lg:py-20 border-t border-neutral-900 text-center">
         <div className="flex items-center justify-center gap-2 mb-4">
           <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
           <span className="text-[10px] uppercase tracking-[0.2em] text-neutral-500 font-bold">Studio Online</span>
         </div>
-        <p className="text-neutral-500 text-[10px] lg:text-xs">Noir Portrait Studio • Cinematic AI Transformation • © 2025</p>
+        <p className="text-neutral-500 text-[10px] lg:text-xs mb-4">Noir Portrait Studio • Cinematic AI Transformation • © 2025</p>
+        <div className="flex justify-center gap-6">
+          <a href={WORKSPACE_URL} target="_blank" rel="noopener noreferrer" className="text-[10px] uppercase tracking-widest text-neutral-600 hover:text-white transition-colors flex items-center gap-1.5">
+            <ExternalLink className="w-3 h-3" />
+            Project Workspace
+          </a>
+        </div>
       </footer>
     </div>
   );
