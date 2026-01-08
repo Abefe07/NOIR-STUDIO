@@ -1,0 +1,7 @@
+{
+  "name": "Noir Portrait Studio",
+  "description": "Transform casual portraits into cinematic, high-fashion black and white masterpieces using advanced AI-driven image editing.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
